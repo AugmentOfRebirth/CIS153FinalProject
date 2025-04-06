@@ -10,9 +10,13 @@ using System.Windows.Forms;
 
 namespace ConnectFour_Group2
 {
-    public partial class Form1 : Form
+    public partial class StatsForm : Form
     {
-        public Form1()
+        //this will be the statistics form
+
+
+
+        public StatsForm()
         {
             InitializeComponent();
         }
