@@ -10,11 +10,13 @@ namespace ConnectFour_Group2
     {
         private string play;
         private string score;
+        private string tie;
 
-        public Player(string p, string s)
+        public Player(string p, string s, string t)
         {
             play = p;
             score = s;
+            tie = t;
         }
         //=======================Getters=======================
         public string getPlay()
@@ -25,6 +27,10 @@ namespace ConnectFour_Group2
         {
             return score;
         }
+        public string getTie()
+        {
+            return tie;
+        }
         //=======================Setters=======================
         public void setPlay(string p)
         {
@@ -33,6 +39,10 @@ namespace ConnectFour_Group2
         public void setScore(string s)
         {
             score = s;
+        }
+        public void setTie(string t)
+        {
+            tie = t;
         }
     }
 }

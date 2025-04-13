@@ -16,9 +16,28 @@ namespace ConnectFour_Group2
 
 
 
+        MainForm mform;
+
         public StatsForm()
         {
+            InitializeComponent();         
+        }
+        //overloaded constructor
+        public StatsForm(MainForm mf)
+        {
             InitializeComponent();
+            mform = mf;
+            mform.fillStatsLabel(lbl_player1, lbl_computer, lbl_total);
+        }
+
+        //==========================================
+        //actions
+        //==========================================
+
+        private void btn_return_Click(object sender, EventArgs e)
+        {
+            mform.Show();
+            this.Close();
         }
     }
 }

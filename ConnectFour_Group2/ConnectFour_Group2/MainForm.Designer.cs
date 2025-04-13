@@ -28,56 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_1player = new System.Windows.Forms.Button();
+            this.btn_2player = new System.Windows.Forms.Button();
+            this.btn_stats = new System.Windows.Forms.Button();
+            this.btn_exit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // btn_1player
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(41, 160);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(212, 65);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "1 PLAYER";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_1player.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_1player.Location = new System.Drawing.Point(41, 160);
+            this.btn_1player.Name = "btn_1player";
+            this.btn_1player.Size = new System.Drawing.Size(212, 65);
+            this.btn_1player.TabIndex = 0;
+            this.btn_1player.Text = "1 PLAYER";
+            this.btn_1player.UseVisualStyleBackColor = true;
+            this.btn_1player.Click += new System.EventHandler(this.btn_1player_Click);
             // 
-            // button2
+            // btn_2player
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(316, 160);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(212, 65);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "2 PLAYER";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_2player.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_2player.Location = new System.Drawing.Point(316, 160);
+            this.btn_2player.Name = "btn_2player";
+            this.btn_2player.Size = new System.Drawing.Size(212, 65);
+            this.btn_2player.TabIndex = 1;
+            this.btn_2player.Text = "2 PLAYER";
+            this.btn_2player.UseVisualStyleBackColor = true;
+            this.btn_2player.Click += new System.EventHandler(this.btn_2player_Click);
             // 
-            // button3
+            // btn_stats
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(41, 303);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(212, 65);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "STATS";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_stats.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_stats.Location = new System.Drawing.Point(41, 303);
+            this.btn_stats.Name = "btn_stats";
+            this.btn_stats.Size = new System.Drawing.Size(212, 65);
+            this.btn_stats.TabIndex = 2;
+            this.btn_stats.Text = "STATS";
+            this.btn_stats.UseVisualStyleBackColor = true;
+            this.btn_stats.Click += new System.EventHandler(this.btn_stats_Click);
             // 
-            // button4
+            // btn_exit
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(316, 303);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(212, 65);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "EXIT";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btn_exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_exit.Location = new System.Drawing.Point(316, 303);
+            this.btn_exit.Name = "btn_exit";
+            this.btn_exit.Size = new System.Drawing.Size(212, 65);
+            this.btn_exit.TabIndex = 3;
+            this.btn_exit.Text = "EXIT";
+            this.btn_exit.UseVisualStyleBackColor = true;
+            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
             // label1
             // 
@@ -85,7 +85,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(27, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(363, 31);
+            this.label1.Size = new System.Drawing.Size(456, 39);
             this.label1.TabIndex = 4;
             this.label1.Text = "WELCOME TO CONNECT 4";
             // 
@@ -95,10 +95,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(587, 414);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_exit);
+            this.Controls.Add(this.btn_stats);
+            this.Controls.Add(this.btn_2player);
+            this.Controls.Add(this.btn_1player);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "Welcome to Connect Four";
@@ -109,10 +109,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_1player;
+        private System.Windows.Forms.Button btn_2player;
+        private System.Windows.Forms.Button btn_stats;
+        private System.Windows.Forms.Button btn_exit;
         private System.Windows.Forms.Label label1;
     }
 }
