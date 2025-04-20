@@ -39,5 +39,11 @@ namespace ConnectFour_Group2
             mform.Show();
             this.Close();
         }
+
+        private void StatsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //this makes sure that clicking the x in the top right closes the whole program and not just the extra window
+            Application.Exit();
+        }
     }
 }

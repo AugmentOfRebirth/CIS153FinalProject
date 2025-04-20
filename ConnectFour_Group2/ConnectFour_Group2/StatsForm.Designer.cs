@@ -158,6 +158,7 @@
             this.Controls.Add(this.label1);
             this.Name = "StatsForm";
             this.Text = "StatsForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StatsForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
