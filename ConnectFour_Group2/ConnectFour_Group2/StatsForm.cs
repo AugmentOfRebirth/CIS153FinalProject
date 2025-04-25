@@ -37,7 +37,7 @@ namespace ConnectFour_Group2
         private void btn_return_Click(object sender, EventArgs e)
         {
             mform.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void StatsForm_FormClosed(object sender, FormClosedEventArgs e)
