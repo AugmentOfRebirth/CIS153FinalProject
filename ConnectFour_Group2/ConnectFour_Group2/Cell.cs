@@ -11,18 +11,18 @@ namespace ConnectFour_Group2
     {
         int row;
         int col;
-        Button btn;
+        PictureBox Pbox;
 
         public Cell()
         {
 
         }
 
-        public Cell(int r, int c, Button b)
+        public Cell(int r, int c, PictureBox p)
         {
             row = r;
             col = c;
-            btn = b;
+            Pbox = p;
         }
 
         // ============= Getters ============
@@ -35,9 +35,9 @@ namespace ConnectFour_Group2
             return col;
         }
 
-        public Button getButton()
+        public PictureBox getBox()
         {
-            return btn;
+            return Pbox;
         }
 
 
@@ -54,9 +54,9 @@ namespace ConnectFour_Group2
             col = c;
         }
 
-        public void setButton(Button b)
+        public void setBox(PictureBox p)
         {
-            btn = b;
+            Pbox = p;
         }
     }
 }
