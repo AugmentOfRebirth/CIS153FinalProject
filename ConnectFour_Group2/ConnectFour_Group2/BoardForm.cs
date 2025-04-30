@@ -16,7 +16,7 @@ namespace ConnectFour_Group2
         {
             InitializeComponent();
         }
-
+        // bitch
         private void BoardForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
