@@ -38,6 +38,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.pb_0_2 = new System.Windows.Forms.PictureBox();
             this.pb_0_6 = new System.Windows.Forms.PictureBox();
             this.pb_1_6 = new System.Windows.Forms.PictureBox();
             this.pb_2_6 = new System.Windows.Forms.PictureBox();
@@ -62,7 +63,6 @@
             this.pb_3_3 = new System.Windows.Forms.PictureBox();
             this.pb_4_3 = new System.Windows.Forms.PictureBox();
             this.pb_5_3 = new System.Windows.Forms.PictureBox();
-            this.pb_0_2 = new System.Windows.Forms.PictureBox();
             this.pb_1_2 = new System.Windows.Forms.PictureBox();
             this.pb_2_2 = new System.Windows.Forms.PictureBox();
             this.pb_3_2 = new System.Windows.Forms.PictureBox();
@@ -81,6 +81,7 @@
             this.pb_4_0 = new System.Windows.Forms.PictureBox();
             this.pb_5_0 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_0_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_0_6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_1_6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_2_6)).BeginInit();
@@ -105,7 +106,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_3_3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_4_3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_5_3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_0_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_1_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_2_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_3_2)).BeginInit();
@@ -235,6 +235,19 @@
             this.label2.TabIndex = 86;
             this.label2.Text = "1\r\n\r\n\r\n\r\n2\r\n\r\n\r\n\r\n3\r\n\r\n\r\n\r\n4\r\n\r\n\r\n\r\n5\r\n\r\n\r\n\r\n6";
             // 
+            // pb_0_2
+            // 
+            this.pb_0_2.Image = global::ConnectFour_Group2.Properties.Resources.black;
+            this.pb_0_2.Location = new System.Drawing.Point(260, 26);
+            this.pb_0_2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pb_0_2.Name = "pb_0_2";
+            this.pb_0_2.Size = new System.Drawing.Size(109, 101);
+            this.pb_0_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_0_2.TabIndex = 60;
+            this.pb_0_2.TabStop = false;
+            this.pb_0_2.MouseEnter += new System.EventHandler(this.pb_0_0_MouseEnter);
+            this.pb_0_2.MouseLeave += new System.EventHandler(this.pb_0_0_MouseLeave);
+            // 
             // pb_0_6
             // 
             this.pb_0_6.Image = global::ConnectFour_Group2.Properties.Resources.red;
@@ -245,6 +258,8 @@
             this.pb_0_6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_0_6.TabIndex = 84;
             this.pb_0_6.TabStop = false;
+            this.pb_0_6.MouseEnter += new System.EventHandler(this.pb_0_0_MouseEnter);
+            this.pb_0_6.MouseLeave += new System.EventHandler(this.pb_0_0_MouseLeave);
             // 
             // pb_1_6
             // 
@@ -311,6 +326,8 @@
             this.pb_0_5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_0_5.TabIndex = 78;
             this.pb_0_5.TabStop = false;
+            this.pb_0_5.MouseEnter += new System.EventHandler(this.pb_0_0_MouseEnter);
+            this.pb_0_5.MouseLeave += new System.EventHandler(this.pb_0_0_MouseLeave);
             // 
             // pb_1_5
             // 
@@ -377,6 +394,8 @@
             this.pb_0_4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_0_4.TabIndex = 72;
             this.pb_0_4.TabStop = false;
+            this.pb_0_4.MouseEnter += new System.EventHandler(this.pb_0_0_MouseEnter);
+            this.pb_0_4.MouseLeave += new System.EventHandler(this.pb_0_0_MouseLeave);
             // 
             // pb_1_4
             // 
@@ -443,6 +462,8 @@
             this.pb_0_3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_0_3.TabIndex = 66;
             this.pb_0_3.TabStop = false;
+            this.pb_0_3.MouseEnter += new System.EventHandler(this.pb_0_0_MouseEnter);
+            this.pb_0_3.MouseLeave += new System.EventHandler(this.pb_0_0_MouseLeave);
             // 
             // pb_1_3
             // 
@@ -498,17 +519,6 @@
             this.pb_5_3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_5_3.TabIndex = 61;
             this.pb_5_3.TabStop = false;
-            // 
-            // pb_0_2
-            // 
-            this.pb_0_2.Image = global::ConnectFour_Group2.Properties.Resources.red;
-            this.pb_0_2.Location = new System.Drawing.Point(260, 26);
-            this.pb_0_2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pb_0_2.Name = "pb_0_2";
-            this.pb_0_2.Size = new System.Drawing.Size(109, 101);
-            this.pb_0_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_0_2.TabIndex = 60;
-            this.pb_0_2.TabStop = false;
             // 
             // pb_1_2
             // 
@@ -567,7 +577,7 @@
             // 
             // pb_0_1
             // 
-            this.pb_0_1.Image = global::ConnectFour_Group2.Properties.Resources.red;
+            this.pb_0_1.Image = global::ConnectFour_Group2.Properties.Resources.black;
             this.pb_0_1.Location = new System.Drawing.Point(368, 154);
             this.pb_0_1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pb_0_1.Name = "pb_0_1";
@@ -575,6 +585,8 @@
             this.pb_0_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_0_1.TabIndex = 54;
             this.pb_0_1.TabStop = false;
+            this.pb_0_1.MouseEnter += new System.EventHandler(this.pb_0_0_MouseEnter);
+            this.pb_0_1.MouseLeave += new System.EventHandler(this.pb_0_0_MouseLeave);
             // 
             // pb_1_1
             // 
@@ -641,6 +653,8 @@
             this.pb_0_0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_0_0.TabIndex = 48;
             this.pb_0_0.TabStop = false;
+            this.pb_0_0.MouseEnter += new System.EventHandler(this.pb_0_0_MouseEnter);
+            this.pb_0_0.MouseLeave += new System.EventHandler(this.pb_0_0_MouseLeave);
             // 
             // pb_1_0
             // 
@@ -745,12 +759,13 @@
             this.Controls.Add(this.pb_5_0);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BoardForm";
             this.Text = "BoardForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BoardForm_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_0_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_0_6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_1_6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_2_6)).EndInit();
@@ -775,7 +790,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_3_3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_4_3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_5_3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_0_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_1_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_2_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_3_2)).EndInit();
