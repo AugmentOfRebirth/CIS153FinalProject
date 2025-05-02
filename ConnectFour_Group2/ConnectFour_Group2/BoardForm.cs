@@ -13,6 +13,7 @@ namespace ConnectFour_Group2
     public partial class BoardForm : Form
     {
         GameMaster gm = new GameMaster();
+        bool buttonWasClicked = false;
         public BoardForm()
         {
             InitializeComponent();
@@ -110,6 +111,12 @@ namespace ConnectFour_Group2
             //{
             //    pbEnterExit(6, 'z');
             //}
+            if (buttonWasClicked)
+            {
+                buttonWasClicked = false;
+                return;
+            }
+
             if (sender is PictureBox pb)
             {
                 string[] parts = pb.Name.Split('_');
@@ -121,7 +128,15 @@ namespace ConnectFour_Group2
         }
         private void pb_Click(object sender, EventArgs e)
         {
-
+            buttonWasClicked = true;
+            if (sender is PictureBox pb)
+            {
+                string[] parts = pb.Name.Split('_');
+                if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                {
+                    pbEnterExit(col, 'x');
+                }
+            }
         }
 
         //=========================functions=================================
@@ -167,6 +182,7 @@ namespace ConnectFour_Group2
             //    tempFilled(0, c, f);
             //}
 
+            //condensed the else if chain
             for (int r = 5; r >= 0; r--)
             {
                 Cell cell = gm.getBoard().getCell(r, c);
@@ -185,7 +201,7 @@ namespace ConnectFour_Group2
             {
                 //gm.getBoard().getCell(r, c).setFilled('x');
                 gm.getBoard().getCell(r, c).getBox().Image = Properties.Resources.blue;
-
+                
             }
             else if (f == 'y')
             {
@@ -200,6 +216,10 @@ namespace ConnectFour_Group2
 
             }
 
+            if (buttonWasClicked)
+            {
+                gm.getBoard().getCell(r, c).setFilled(f);
+            }
         }
         public void permaFilled(int r, int c, char f)
         {
