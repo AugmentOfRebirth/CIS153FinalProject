@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -9,7 +10,7 @@ namespace ConnectFour_Group2
 {
     internal class GameMaster
     {
-        Board b;
+        Board b = new Board();
 
 
         public void InitGame(Form form)
@@ -39,7 +40,9 @@ namespace ConnectFour_Group2
                 col = Int32.Parse(name.Substring(posDelim + 1));
 
                 //create a new cell
-                c = new Cell(row, col, PictureBox);
+                c = new Cell(row, col, PictureBox, 'z');
+                //z is equal to empty
+                
 
                 //add that cell to the gameboard
                 b.setGameBoardCell(c);
@@ -47,8 +50,13 @@ namespace ConnectFour_Group2
 
 
             }
-        }
 
+
+        }
+        public Board getBoard()
+        {
+            return b;
+        }
 
     }
 }

@@ -30,6 +30,7 @@ namespace ConnectFour_Group2
         {
             InitializeComponent();
             addFromFile();
+            
             //putting a table here for reference
             //0 = player 1, 1 = computer
             //Console.WriteLine(players[0].getPlay());

@@ -8,8 +8,8 @@ namespace ConnectFour_Group2
 {
     internal class Board
     {
-        private const int numRows = 2;
-        private const int numCols = 2;
+        private const int numRows = 6;
+        private const int numCols = 7;
         Cell[,] gameBoard = new Cell[numRows, numCols];
 
 

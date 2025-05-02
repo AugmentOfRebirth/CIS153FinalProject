@@ -11,6 +11,7 @@ namespace ConnectFour_Group2
     {
         int row;
         int col;
+        char filled;
         PictureBox Pbox;
 
         public Cell()
@@ -18,11 +19,12 @@ namespace ConnectFour_Group2
 
         }
 
-        public Cell(int r, int c, PictureBox p)
+        public Cell(int r, int c, PictureBox p, char f)
         {
             row = r;
             col = c;
             Pbox = p;
+            filled = f;
         }
 
         // ============= Getters ============
@@ -34,7 +36,10 @@ namespace ConnectFour_Group2
         {
             return col;
         }
-
+        public char getFilled()
+        {
+            return filled;
+        }
         public PictureBox getBox()
         {
             return Pbox;
@@ -53,7 +58,10 @@ namespace ConnectFour_Group2
         {
             col = c;
         }
-
+        public void setFilled(char f)
+        {
+            filled = f;
+        }
         public void setBox(PictureBox p)
         {
             Pbox = p;
