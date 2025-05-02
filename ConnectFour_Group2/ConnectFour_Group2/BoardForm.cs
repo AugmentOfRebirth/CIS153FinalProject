@@ -21,7 +21,7 @@ namespace ConnectFour_Group2
             initPictures();
 
             Console.WriteLine(gm.getBoard().getGameBoard().Length);
-            Console.WriteLine(gm.getBoard().getCell(0, 0));
+            Console.WriteLine(gm.getBoard().getCell(0, 3));
         }
         // bitch
         // no u - Madz :)
@@ -38,7 +38,7 @@ namespace ConnectFour_Group2
         {
             Application.Exit();
         }
-        private void pb_0_0_MouseEnter(object sender, EventArgs e)
+        private void pb_MouseEnter(object sender, EventArgs e)
         {
             //this action handles the turn preview for all top buttons
             if (Object.ReferenceEquals(sender, pb_0_0))
@@ -70,7 +70,7 @@ namespace ConnectFour_Group2
                 pbEnterExit(6, 'x');
             }
         }
-        private void pb_0_0_MouseLeave(object sender, EventArgs e)
+        private void pb_MouseLeave(object sender, EventArgs e)
         {
             //this action makes sure the turn preview goes away after moving the mouse off
             if (Object.ReferenceEquals(sender, pb_0_0))
@@ -102,7 +102,10 @@ namespace ConnectFour_Group2
                 pbEnterExit(6, 'z');
             }
         }
-      
+        private void pb_Click(object sender, EventArgs e)
+        {
+
+        }
 
         //=========================functions=================================
         public void initPictures()
@@ -122,56 +125,69 @@ namespace ConnectFour_Group2
             //by checking each picture box row by row for the given column
 
             //the char is being passed so this function can be used on 2 player mode
-            if (gm.getBoard().getCell(5, c).getFilled() == 'z')
+            //if (gm.getBoard().getCell(5, c).getFilled() == 'z')
+            //{
+            //    tempFilled(5, c, f);
+            //}
+            //else if (gm.getBoard().getCell(4, c).getFilled() == 'z')
+            //{
+            //    tempFilled(4, c, f);
+            //}
+            //else if (gm.getBoard().getCell(3, c).getFilled() == 'z')
+            //{
+            //    tempFilled(3, c, f);
+            //}
+            //else if (gm.getBoard().getCell(2, c).getFilled() == 'z')
+            //{
+            //    tempFilled(2, c, f);
+            //}
+            //else if (gm.getBoard().getCell(1, c).getFilled() == 'z')
+            //{
+            //    tempFilled(1, c, f);
+            //}
+            //else if (gm.getBoard().getCell(0, c).getFilled() == 'z')
+            //{
+            //    tempFilled(0, c, f);
+            //}
+
+            for (int r = 5; r >= 0; r--)
             {
-                tempFilled(5, c, f);
-            }
-            else if (gm.getBoard().getCell(4, c).getFilled() == 'z')
-            {
-                tempFilled(4, c, f);
-            }
-            else if (gm.getBoard().getCell(3, c).getFilled() == 'z')
-            {
-                tempFilled(3, c, f);
-            }
-            else if (gm.getBoard().getCell(2, c).getFilled() == 'z')
-            {
-                tempFilled(2, c, f);
-            }
-            else if (gm.getBoard().getCell(1, c).getFilled() == 'z')
-            {
-                tempFilled(1, c, f);
-            }
-            else if (gm.getBoard().getCell(0, c).getFilled() == 'z')
-            {
-                tempFilled(0, c, f);
+                Cell cell = gm.getBoard().getCell(r, c);
+                if (cell != null && cell.getFilled() == 'z')
+                {
+                    tempFilled(r, c, f);
+                    break;
+                }
             }
         }
         public void tempFilled(int r, int c, char f)
         {
-            //will probably only be used inside of pbEnterExit, changes picture
+            //will probably only be used inside of pbEnterExit, temporarily changes picture
 
             if (f == 'x')
             {
-                //gm.getBoard().getCell(r, c).setFilled('x');
+                gm.getBoard().getCell(r, c).setFilled('x');
                 gm.getBoard().getCell(r, c).getBox().Image = Properties.Resources.blue;
 
             }
             else if (f == 'y')
             {
-                //gm.getBoard().getCell(r, c).setFilled('y');
+                gm.getBoard().getCell(r, c).setFilled('y');
                 gm.getBoard().getCell(r, c).getBox().Image = Properties.Resources.red;
 
             }
             else if (f == 'z')
             {
-                //gm.getBoard().getCell(r, c).setFilled('z');
+                gm.getBoard().getCell(r, c).setFilled('z');
                 gm.getBoard().getCell(r, c).getBox().Image = Properties.Resources.black;
 
             }
 
         }
+        public void permaFilled(int r, int c, char f)
+        {
 
+        }
 
     }
 }

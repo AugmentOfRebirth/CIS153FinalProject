@@ -42,7 +42,7 @@ namespace ConnectFour_Group2
                 //create a new cell
                 c = new Cell(row, col, PictureBox, 'z');
                 //z is equal to empty
-                
+
 
                 //add that cell to the gameboard
                 b.setGameBoardCell(c);
