@@ -40,66 +40,83 @@ namespace ConnectFour_Group2
         }
         private void pb_MouseEnter(object sender, EventArgs e)
         {
-            //this action handles the turn preview for all top buttons
-            if (Object.ReferenceEquals(sender, pb_0_0))
+            ////this action handles the turn preview for all top buttons
+            //if (Object.ReferenceEquals(sender, pb_0_0))
+            //{
+            //    pbEnterExit(0, 'x');
+            //}
+            //else if (Object.ReferenceEquals(sender, pb_0_1))
+            //{
+            //    pbEnterExit(1, 'x');
+            //}
+            //else if (Object.ReferenceEquals(sender, pb_0_2))
+            //{
+            //    pbEnterExit(2, 'x');
+            //}
+            //else if (Object.ReferenceEquals(sender, pb_0_3))
+            //{
+            //    pbEnterExit(3, 'x');
+            //}
+            //else if (Object.ReferenceEquals(sender, pb_0_4))
+            //{
+            //    pbEnterExit(4, 'x');
+            //}
+            //else if (Object.ReferenceEquals(sender, pb_0_5))
+            //{
+            //    pbEnterExit(5, 'x');
+            //}
+            //else if (Object.ReferenceEquals(sender, pb_0_6))
+            //{
+            //    pbEnterExit(6, 'x');
+            //}
+
+            if (sender is PictureBox pb)
             {
-                pbEnterExit(0, 'x');
-            }
-            else if (Object.ReferenceEquals(sender, pb_0_1))
-            {
-                pbEnterExit(1, 'x');
-            }
-            else if (Object.ReferenceEquals(sender, pb_0_2))
-            {
-                pbEnterExit(2, 'x');
-            }
-            else if (Object.ReferenceEquals(sender, pb_0_3))
-            {
-                pbEnterExit(3, 'x');
-            }
-            else if (Object.ReferenceEquals(sender, pb_0_4))
-            {
-                pbEnterExit(4, 'x');
-            }
-            else if (Object.ReferenceEquals(sender, pb_0_5))
-            {
-                pbEnterExit(5, 'x');
-            }
-            else if (Object.ReferenceEquals(sender, pb_0_6))
-            {
-                pbEnterExit(6, 'x');
+                string[] parts = pb.Name.Split('_');
+                if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                {
+                    pbEnterExit(col, 'x');
+                }
             }
         }
         private void pb_MouseLeave(object sender, EventArgs e)
         {
-            //this action makes sure the turn preview goes away after moving the mouse off
-            if (Object.ReferenceEquals(sender, pb_0_0))
+            ////this action makes sure the turn preview goes away after moving the mouse off
+            //if (Object.ReferenceEquals(sender, pb_0_0))
+            //{
+            //    pbEnterExit(0, 'z');
+            //}
+            //else if (Object.ReferenceEquals(sender, pb_0_1))
+            //{
+            //    pbEnterExit(1, 'z');
+            //}
+            //else if (Object.ReferenceEquals(sender, pb_0_2))
+            //{
+            //    pbEnterExit(2, 'z');
+            //}
+            //else if (Object.ReferenceEquals(sender, pb_0_3))
+            //{
+            //    pbEnterExit(3, 'z');
+            //}
+            //else if (Object.ReferenceEquals(sender, pb_0_4))
+            //{
+            //    pbEnterExit(4, 'z');
+            //}
+            //else if (Object.ReferenceEquals(sender, pb_0_5))
+            //{
+            //    pbEnterExit(5, 'z');
+            //}
+            //else if (Object.ReferenceEquals(sender, pb_0_6))
+            //{
+            //    pbEnterExit(6, 'z');
+            //}
+            if (sender is PictureBox pb)
             {
-                pbEnterExit(0, 'z');
-            }
-            else if (Object.ReferenceEquals(sender, pb_0_1))
-            {
-                pbEnterExit(1, 'z');
-            }
-            else if (Object.ReferenceEquals(sender, pb_0_2))
-            {
-                pbEnterExit(2, 'z');
-            }
-            else if (Object.ReferenceEquals(sender, pb_0_3))
-            {
-                pbEnterExit(3, 'z');
-            }
-            else if (Object.ReferenceEquals(sender, pb_0_4))
-            {
-                pbEnterExit(4, 'z');
-            }
-            else if (Object.ReferenceEquals(sender, pb_0_5))
-            {
-                pbEnterExit(5, 'z');
-            }
-            else if (Object.ReferenceEquals(sender, pb_0_6))
-            {
-                pbEnterExit(6, 'z');
+                string[] parts = pb.Name.Split('_');
+                if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                {
+                    pbEnterExit(col, 'z');
+                }
             }
         }
         private void pb_Click(object sender, EventArgs e)
@@ -166,19 +183,19 @@ namespace ConnectFour_Group2
 
             if (f == 'x')
             {
-                gm.getBoard().getCell(r, c).setFilled('x');
+                //gm.getBoard().getCell(r, c).setFilled('x');
                 gm.getBoard().getCell(r, c).getBox().Image = Properties.Resources.blue;
 
             }
             else if (f == 'y')
             {
-                gm.getBoard().getCell(r, c).setFilled('y');
+                //gm.getBoard().getCell(r, c).setFilled('y');
                 gm.getBoard().getCell(r, c).getBox().Image = Properties.Resources.red;
 
             }
             else if (f == 'z')
             {
-                gm.getBoard().getCell(r, c).setFilled('z');
+                //gm.getBoard().getCell(r, c).setFilled('z');
                 gm.getBoard().getCell(r, c).getBox().Image = Properties.Resources.black;
 
             }
