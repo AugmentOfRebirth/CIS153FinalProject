@@ -161,12 +161,18 @@ namespace ConnectFour_Group2
                         pbEnterExit(col, 'x');
                         player1Turn = false;
                         //Console.WriteLine("first if statement");
+
+                        lbl_Turn.Text = "Player 2's Turn";
+                        lbl_Turn.ForeColor = Color.Red;
                     }
                     else if(!player1Turn)
                     {
                         pbEnterExit(col, 'y');
                         player1Turn= true;
                         //Console.WriteLine("second if statement");
+
+                        lbl_Turn.Text = "Player 1's Turn";
+                        lbl_Turn.ForeColor = Color.Blue;
                     }
 
                 }
@@ -260,22 +266,65 @@ namespace ConnectFour_Group2
         }
         public void checkForWin(int r, int c, char f)
         {
-            
+         
+            //checking if its a win and which player gets that win
+
             if(winVertical(r,c,f))
             {
+                if(player1Turn)
+                {
+                    lbl_win.Visible = true;
+                }
+                else
+                {
+                    lbl_win.Text = "Player 2 Wins!!!";
+                    lbl_win.ForeColor = Color.Red;
+                    lbl_win.Visible = true;
+
+                }
 
             }
             else if(winHorizontal(r,c,f))
             {
+                if (player1Turn)
+                {
+                    lbl_win.Visible = true;
+                }
+                else
+                {
+                    lbl_win.Text = "Player 2 Wins!!!";
+                    lbl_win.ForeColor = Color.Red;
+                    lbl_win.Visible = true;
 
+                }
             }
             else if(winDiagonalAscend(r,c,f))
             {
+                if (player1Turn)
+                {
+                    lbl_win.Visible = true;
+                }
+                else
+                {
+                    lbl_win.Text = "Player 2 Wins!!!";
+                    lbl_win.ForeColor = Color.Red;
+                    lbl_win.Visible = true;
 
+                }
             }
             else if (winDiagonalDescend(r, c, f))
             {
+                if (player1Turn)
+                {
+                    lbl_win.Visible = true;
+                }
+                else
+                {
+                    lbl_win.Text = "Player 2 Wins!!!";
+                    lbl_win.ForeColor = Color.Red;
+                    lbl_win.Visible = true;
 
+                }
             }
 
 
@@ -393,7 +442,5 @@ namespace ConnectFour_Group2
             }
             return false;
         }
-
-
     }
 }
