@@ -76,37 +76,9 @@ namespace ConnectFour_Group2
             //    pbEnterExit(6, 'x');
             //}
 
-          
-
-
-            if (gameType == 1)
+            if (sender is PictureBox pb)
             {
-                if (sender is PictureBox pb)
-                {
-
-                    if(player1Turn)
-                    {
-                        string[] parts = pb.Name.Split('_');
-                        if (parts.Length == 3 && int.TryParse(parts[2], out int col))
-                        {
-                            pbEnterExit(col, 'x');
-                        }
-
-                    }
-                    else
-                    {
-                        string[] parts = pb.Name.Split('_');
-                        if (parts.Length == 3 && int.TryParse(parts[2], out int col))
-                        {
-                            pbEnterExit(col, 'y');
-                        }
-                    }
-
-                }
-            }
-            else
-            {
-                if (sender is PictureBox pb)
+                if(player1Turn)
                 {
                     string[] parts = pb.Name.Split('_');
                     if (parts.Length == 3 && int.TryParse(parts[2], out int col))
@@ -114,7 +86,19 @@ namespace ConnectFour_Group2
                         pbEnterExit(col, 'x');
                     }
                 }
+                else
+                {
+                    string[] parts = pb.Name.Split('_');
+                    if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                    {
+                        pbEnterExit(col, 'y');
+                    }
+                }               
             }
+
+
+            
+            
 
 
         }
@@ -176,11 +160,13 @@ namespace ConnectFour_Group2
                     {
                         pbEnterExit(col, 'x');
                         player1Turn = false;
+                        //Console.WriteLine("first if statement");
                     }
                     else if(!player1Turn)
                     {
                         pbEnterExit(col, 'y');
                         player1Turn= true;
+                        //Console.WriteLine("second if statement");
                     }
 
                 }
@@ -267,14 +253,37 @@ namespace ConnectFour_Group2
             if (buttonWasClicked)
             {
                 gm.getBoard().getCell(r, c).setFilled(f);
+
+                //this is where checkForWin probably should go
+                checkForWin(r, c, f);
             }
         }
-      
-        public void switchColor()
+        public void checkForWin(int r, int c, char f)
         {
+            
 
+            if(r <= 2)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if (gm.getBoard().getCell(r + i, c).getFilled() != f)
+                    {
+                        Console.WriteLine("this is not a win");
+                        break;
+                    }                  
 
+                    if(i == 3)
+                    {
+                        Console.WriteLine("this is a win");
+                        
+                    }
+                }
+            }
+
+            
         }
+
+
 
     }
 }
