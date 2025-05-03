@@ -12,22 +12,27 @@ namespace ConnectFour_Group2
 {
     public partial class BoardForm : Form
     {
-        GameMaster gm = new GameMaster();
-        bool buttonWasClicked = false;
-        public int gameType;
-        public bool player1Turn = true;
+        private GameMaster gm = new GameMaster();
+        private bool buttonWasClicked = false;
+        private int gameType;
+        private bool player1Turn = true;
+        private MainForm mform;
+        private StatsForm sForm;
+        private int turnCount = 0;
 
-        public BoardForm(int gameType)
+        
+        public BoardForm(MainForm mf, int gt)
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             gm.InitGame(this);
-
+            mform = mf;
             initPictures();
 
-            gameType = this.gameType;
-
-            Console.WriteLine(gm.getBoard().getGameBoard().Length);
-            Console.WriteLine(gm.getBoard().getCell(0, 3));
+            gameType = gt;
+            Console.WriteLine(gameType);
+            //Console.WriteLine(gm.getBoard().getGameBoard().Length);
+            //Console.WriteLine(gm.getBoard().getCell(0, 3));
         }
         // bitch
         // no u - Madz :)
@@ -47,38 +52,12 @@ namespace ConnectFour_Group2
         private void pb_MouseEnter(object sender, EventArgs e)
         {
             ////this action handles the turn preview for all top buttons
-            //if (Object.ReferenceEquals(sender, pb_0_0))
-            //{
-            //    pbEnterExit(0, 'x');
-            //}
-            //else if (Object.ReferenceEquals(sender, pb_0_1))
-            //{
-            //    pbEnterExit(1, 'x');
-            //}
-            //else if (Object.ReferenceEquals(sender, pb_0_2))
-            //{
-            //    pbEnterExit(2, 'x');
-            //}
-            //else if (Object.ReferenceEquals(sender, pb_0_3))
-            //{
-            //    pbEnterExit(3, 'x');
-            //}
-            //else if (Object.ReferenceEquals(sender, pb_0_4))
-            //{
-            //    pbEnterExit(4, 'x');
-            //}
-            //else if (Object.ReferenceEquals(sender, pb_0_5))
-            //{
-            //    pbEnterExit(5, 'x');
-            //}
-            //else if (Object.ReferenceEquals(sender, pb_0_6))
-            //{
-            //    pbEnterExit(6, 'x');
-            //}
+
+
 
             if (sender is PictureBox pb)
             {
-                if(player1Turn)
+                if (player1Turn)
                 {
                     string[] parts = pb.Name.Split('_');
                     if (parts.Length == 3 && int.TryParse(parts[2], out int col))
@@ -93,46 +72,15 @@ namespace ConnectFour_Group2
                     {
                         pbEnterExit(col, 'y');
                     }
-                }               
+                }
             }
-
-
-            
-            
 
 
         }
         private void pb_MouseLeave(object sender, EventArgs e)
         {
             ////this action makes sure the turn preview goes away after moving the mouse off
-            //if (Object.ReferenceEquals(sender, pb_0_0))
-            //{
-            //    pbEnterExit(0, 'z');
-            //}
-            //else if (Object.ReferenceEquals(sender, pb_0_1))
-            //{
-            //    pbEnterExit(1, 'z');
-            //}
-            //else if (Object.ReferenceEquals(sender, pb_0_2))
-            //{
-            //    pbEnterExit(2, 'z');
-            //}
-            //else if (Object.ReferenceEquals(sender, pb_0_3))
-            //{
-            //    pbEnterExit(3, 'z');
-            //}
-            //else if (Object.ReferenceEquals(sender, pb_0_4))
-            //{
-            //    pbEnterExit(4, 'z');
-            //}
-            //else if (Object.ReferenceEquals(sender, pb_0_5))
-            //{
-            //    pbEnterExit(5, 'z');
-            //}
-            //else if (Object.ReferenceEquals(sender, pb_0_6))
-            //{
-            //    pbEnterExit(6, 'z');
-            //}
+
             if (buttonWasClicked)
             {
                 buttonWasClicked = false;
@@ -156,7 +104,9 @@ namespace ConnectFour_Group2
                 string[] parts = pb.Name.Split('_');
                 if (parts.Length == 3 && int.TryParse(parts[2], out int col))
                 {
-                    if(player1Turn)
+                    bool colFillCheck = pbEnterCheck(col);
+
+                    if(player1Turn && colFillCheck)
                     {
                         pbEnterExit(col, 'x');
                         player1Turn = false;
@@ -164,8 +114,15 @@ namespace ConnectFour_Group2
 
                         lbl_Turn.Text = "Player 2's Turn";
                         lbl_Turn.ForeColor = Color.Red;
+
+                        turnCount++;
+
+                        buttonWasClicked = false;
+                        pbEnterExit(col, 'y');
+
+
                     }
-                    else if(!player1Turn)
+                    else if(!player1Turn && colFillCheck)
                     {
                         pbEnterExit(col, 'y');
                         player1Turn= true;
@@ -173,12 +130,32 @@ namespace ConnectFour_Group2
 
                         lbl_Turn.Text = "Player 1's Turn";
                         lbl_Turn.ForeColor = Color.Blue;
+
+                        turnCount++;
+
+                        buttonWasClicked = false;
+                        pbEnterExit(col, 'x');
+
                     }
 
                 }
             }
-        }
 
+            
+
+            if (turnCount == 42)
+            {
+                //tie games
+                whoWon(3);
+            }
+
+
+        }
+        private void btn_statsReturn_Click(object sender, EventArgs e)
+        {
+            sForm.Show();
+            this.Hide();
+        }
         //=========================functions=================================
         public void initPictures()
         {
@@ -197,30 +174,6 @@ namespace ConnectFour_Group2
             //by checking each picture box row by row for the given column
 
             //the char is being passed so this function can be used on 2 player mode
-            //if (gm.getBoard().getCell(5, c).getFilled() == 'z')
-            //{
-            //    tempFilled(5, c, f);
-            //}
-            //else if (gm.getBoard().getCell(4, c).getFilled() == 'z')
-            //{
-            //    tempFilled(4, c, f);
-            //}
-            //else if (gm.getBoard().getCell(3, c).getFilled() == 'z')
-            //{
-            //    tempFilled(3, c, f);
-            //}
-            //else if (gm.getBoard().getCell(2, c).getFilled() == 'z')
-            //{
-            //    tempFilled(2, c, f);
-            //}
-            //else if (gm.getBoard().getCell(1, c).getFilled() == 'z')
-            //{
-            //    tempFilled(1, c, f);
-            //}
-            //else if (gm.getBoard().getCell(0, c).getFilled() == 'z')
-            //{
-            //    tempFilled(0, c, f);
-            //}
 
             //condensed the else if chain
             for (int r = 5; r >= 0; r--)
@@ -232,6 +185,20 @@ namespace ConnectFour_Group2
                     break;
                 }
             }
+        }
+        public bool pbEnterCheck(int c)
+        {
+            //checks before pbEnterExit to prevent issues
+            for (int r = 5; r >= 0; r--)
+            {
+                Cell cell = gm.getBoard().getCell(r, c);
+                if (cell != null && cell.getFilled() == 'z')
+                {
+                    return true;                   
+                }
+            }
+
+            return false;
         }
         public void tempFilled(int r, int c, char f)
         {
@@ -258,22 +225,26 @@ namespace ConnectFour_Group2
 
             if (buttonWasClicked)
             {
+                //permafill if buttonWasClicked
                 gm.getBoard().getCell(r, c).setFilled(f);
-
-                //this is where checkForWin probably should go
+               
                 checkForWin(r, c, f);
             }
         }
         public void checkForWin(int r, int c, char f)
         {
-         
+
             //checking if its a win and which player gets that win
+            bool won = false;
+            bool p1win = false;
 
             if(winVertical(r,c,f))
             {
+                won = true;
                 if(player1Turn)
                 {
                     lbl_win.Visible = true;
+                    p1win = true;
                 }
                 else
                 {
@@ -286,9 +257,11 @@ namespace ConnectFour_Group2
             }
             else if(winHorizontal(r,c,f))
             {
+                won = true;
                 if (player1Turn)
                 {
                     lbl_win.Visible = true;
+                    p1win = true;
                 }
                 else
                 {
@@ -300,9 +273,11 @@ namespace ConnectFour_Group2
             }
             else if(winDiagonalAscend(r,c,f))
             {
+                won = true;
                 if (player1Turn)
                 {
                     lbl_win.Visible = true;
+                    p1win = true;
                 }
                 else
                 {
@@ -314,9 +289,11 @@ namespace ConnectFour_Group2
             }
             else if (winDiagonalDescend(r, c, f))
             {
+                won = true;
                 if (player1Turn)
                 {
                     lbl_win.Visible = true;
+                    p1win = true;
                 }
                 else
                 {
@@ -327,10 +304,19 @@ namespace ConnectFour_Group2
                 }
             }
 
+            if(won && p1win)
+            {
+                whoWon(1);
+            }
+            else if(won && !p1win)
+            {
+                whoWon(2);
+            }
 
         }
         public bool winVertical(int r, int c, int f)
         {
+            //vertical win check
             if (r <= 2)
             {
                 for (int i = 0; i < 4; i++)
@@ -352,7 +338,7 @@ namespace ConnectFour_Group2
         }
         public bool winHorizontal(int r, int c, int f)
         {
-            // Horizontal check (both sides)
+            // Horizontal win check
             int count = 1;
 
             // Left
@@ -380,7 +366,7 @@ namespace ConnectFour_Group2
         }
         public bool winDiagonalAscend(int r, int c, int f)
         {
-            // Horizontal check (both sides)
+            // Diagonal Ascending win check
             int count = 1;
 
             // Left
@@ -412,7 +398,7 @@ namespace ConnectFour_Group2
         }
         public bool winDiagonalDescend(int r, int c, int f)
         {
-            // Horizontal check (both sides)
+            // Diagonal Descending win check
             int count = 1;
 
             // Left
@@ -442,5 +428,32 @@ namespace ConnectFour_Group2
             }
             return false;
         }
+        public void enableReviewMode()
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Enabled = false;
+            }
+            lbl_Turn.Visible = false;
+            btn_statsReturn.Visible = true;
+            btn_statsReturn.Enabled = true;
+        }
+        public void whoWon(int whoWon)
+        {
+            //who won determines statform functionality. 1 is player 1, 2 is player 2, 3 is tie
+            StatsForm formtoload = new StatsForm(mform, this, gameType, whoWon);
+            mform.loadNewForm(formtoload);
+            this.Hide();
+            enableReviewMode();
+        }
+
+        //setter just in case zmoore doesn't like public form varaibles
+        public void SetStatsForm(StatsForm stats)
+        {
+            //just in case zmoore cares about private form variables
+            sForm = stats;
+        }
+
+
     }
 }

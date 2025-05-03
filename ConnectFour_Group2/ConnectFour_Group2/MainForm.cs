@@ -25,10 +25,11 @@ namespace ConnectFour_Group2
 
 
 
-        List<Player> players = new List<Player>();
+        private List<Player> players = new List<Player>();
         public MainForm()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             addFromFile();
             
             //putting a table here for reference
@@ -54,14 +55,14 @@ namespace ConnectFour_Group2
 
         private void btn_1player_Click(object sender, EventArgs e)
         {
-            BoardForm formtoload = new BoardForm(0);
+            BoardForm formtoload = new BoardForm(this, 0);
             loadNewForm(formtoload);
             this.Hide();
         }
 
         private void btn_2player_Click(object sender, EventArgs e)
         {
-            BoardForm formtoload = new BoardForm(1);
+            BoardForm formtoload = new BoardForm(this, 1);
             loadNewForm(formtoload);
             this.Hide();
         }
