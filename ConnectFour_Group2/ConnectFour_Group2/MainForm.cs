@@ -54,14 +54,14 @@ namespace ConnectFour_Group2
 
         private void btn_1player_Click(object sender, EventArgs e)
         {
-            BoardForm formtoload = new BoardForm();
+            BoardForm formtoload = new BoardForm(0);
             loadNewForm(formtoload);
             this.Hide();
         }
 
         private void btn_2player_Click(object sender, EventArgs e)
         {
-            BoardForm formtoload = new BoardForm();
+            BoardForm formtoload = new BoardForm(1);
             loadNewForm(formtoload);
             this.Hide();
         }

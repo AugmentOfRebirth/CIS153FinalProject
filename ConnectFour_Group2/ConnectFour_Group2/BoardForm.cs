@@ -14,12 +14,17 @@ namespace ConnectFour_Group2
     {
         GameMaster gm = new GameMaster();
         bool buttonWasClicked = false;
-        public BoardForm()
+        public int gameType;
+        public bool player1Turn = true;
+
+        public BoardForm(int gameType)
         {
             InitializeComponent();
             gm.InitGame(this);
 
             initPictures();
+
+            gameType = this.gameType;
 
             Console.WriteLine(gm.getBoard().getGameBoard().Length);
             Console.WriteLine(gm.getBoard().getCell(0, 3));
@@ -71,14 +76,47 @@ namespace ConnectFour_Group2
             //    pbEnterExit(6, 'x');
             //}
 
-            if (sender is PictureBox pb)
+          
+
+
+            if (gameType == 1)
             {
-                string[] parts = pb.Name.Split('_');
-                if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                if (sender is PictureBox pb)
                 {
-                    pbEnterExit(col, 'x');
+
+                    if(player1Turn)
+                    {
+                        string[] parts = pb.Name.Split('_');
+                        if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                        {
+                            pbEnterExit(col, 'x');
+                        }
+
+                    }
+                    else
+                    {
+                        string[] parts = pb.Name.Split('_');
+                        if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                        {
+                            pbEnterExit(col, 'y');
+                        }
+                    }
+
                 }
             }
+            else
+            {
+                if (sender is PictureBox pb)
+                {
+                    string[] parts = pb.Name.Split('_');
+                    if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                    {
+                        pbEnterExit(col, 'x');
+                    }
+                }
+            }
+
+
         }
         private void pb_MouseLeave(object sender, EventArgs e)
         {
@@ -134,7 +172,17 @@ namespace ConnectFour_Group2
                 string[] parts = pb.Name.Split('_');
                 if (parts.Length == 3 && int.TryParse(parts[2], out int col))
                 {
-                    pbEnterExit(col, 'x');
+                    if(player1Turn)
+                    {
+                        pbEnterExit(col, 'x');
+                        player1Turn = false;
+                    }
+                    else if(!player1Turn)
+                    {
+                        pbEnterExit(col, 'y');
+                        player1Turn= true;
+                    }
+
                 }
             }
         }
@@ -221,8 +269,10 @@ namespace ConnectFour_Group2
                 gm.getBoard().getCell(r, c).setFilled(f);
             }
         }
-        public void permaFilled(int r, int c, char f)
+      
+        public void switchColor()
         {
+
 
         }
 
