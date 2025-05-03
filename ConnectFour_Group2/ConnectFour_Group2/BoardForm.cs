@@ -261,28 +261,138 @@ namespace ConnectFour_Group2
         public void checkForWin(int r, int c, char f)
         {
             
+            if(winVertical(r,c,f))
+            {
 
-            if(r <= 2)
+            }
+            else if(winHorizontal(r,c,f))
+            {
+
+            }
+            else if(winDiagonalAscend(r,c,f))
+            {
+
+            }
+            else if (winDiagonalDescend(r, c, f))
+            {
+
+            }
+
+
+        }
+        public bool winVertical(int r, int c, int f)
+        {
+            if (r <= 2)
             {
                 for (int i = 0; i < 4; i++)
                 {
                     if (gm.getBoard().getCell(r + i, c).getFilled() != f)
                     {
-                        Console.WriteLine("this is not a win");
-                        break;
-                    }                  
+                        //Console.WriteLine("this is not a win");
+                        return false;
+                    }
 
-                    if(i == 3)
+                    if (i == 3)
                     {
-                        Console.WriteLine("this is a win");
-                        
+                        Console.WriteLine("vertical win");
+                        return true;
                     }
                 }
             }
-
-            
+            return false;
         }
+        public bool winHorizontal(int r, int c, int f)
+        {
+            // Horizontal check (both sides)
+            int count = 1;
 
+            // Left
+            int col = c - 1;
+            while (col >= 0 && gm.getBoard().getCell(r, col).getFilled() == f)
+            {
+                count++;
+                col--;
+            }
+
+            // Right
+            col = c + 1;
+            while (col <= 6 && gm.getBoard().getCell(r, col).getFilled() == f)
+            {
+                count++;
+                col++;
+            }
+
+            if (count >= 4)
+            {
+                Console.WriteLine("horizontal win");
+                return true;
+            }
+            return false;
+        }
+        public bool winDiagonalAscend(int r, int c, int f)
+        {
+            // Horizontal check (both sides)
+            int count = 1;
+
+            // Left
+            int col = c - 1;
+            int row = r + 1;
+            while ((col >= 0 && row <= 5) && gm.getBoard().getCell(row, col).getFilled() == f)
+            {
+                count++;
+                col--;
+                row++;
+            }
+
+            // Right
+            col = c + 1;
+            row = r - 1;
+            while ((col <= 6 && row >= 0) && gm.getBoard().getCell(row, col).getFilled() == f)
+            {
+                count++;
+                col++;
+                row--;
+            }
+
+            if (count >= 4)
+            {
+                Console.WriteLine("Diagonal Ascended win");
+                return true;
+            }
+            return false;
+        }
+        public bool winDiagonalDescend(int r, int c, int f)
+        {
+            // Horizontal check (both sides)
+            int count = 1;
+
+            // Left
+            int col = c - 1;
+            int row = r - 1;
+            while ((col >= 0 && row >= 0) && gm.getBoard().getCell(row, col).getFilled() == f)
+            {
+                count++;
+                col--;
+                row--;
+            }
+
+            // Right
+            col = c + 1;
+            row = r + 1;
+            while ((col <= 6 && row <= 5) && gm.getBoard().getCell(row, col).getFilled() == f)
+            {
+                count++;
+                col++;
+                row++;
+            }
+
+            if (count >= 4)
+            {
+                Console.WriteLine("Diagonal Descended win");
+                return true;
+            }
+            return false;
+        }
 
 
     }
