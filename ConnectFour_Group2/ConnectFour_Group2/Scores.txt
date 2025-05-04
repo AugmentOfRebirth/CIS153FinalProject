@@ -1,2 +1,2 @@
-Player 1,8,1
-Computer,9,1
+Player 1,11,1
+Computer,16,1

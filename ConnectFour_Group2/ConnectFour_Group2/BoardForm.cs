@@ -634,9 +634,56 @@ namespace ConnectFour_Group2
                 }
             }
 
-            //if neither of those end the game, proceed to "strategy"
+            //if neither of those end the game, proceed to his " three prong strategy"
 
-            //testing braindead strategy
+
+            //rule one
+            //if Kevin sees a valid spot between two of the players pieces, he will go there
+            for (int c = 0; c < 7; c++)
+            {
+                for (int r = 5; r >= 0; r--)
+                {
+                    if (validPosition(r, c))
+                    {
+                        if(AIbetweenTwo(r, c, 'x'))
+                        {
+                            AIFill(r, c, 1);
+                            //gameOver = true;
+                            Console.WriteLine("Kevin is using rule 1");
+                            return;
+                        }
+                        break;
+                    }
+
+                }
+            }
+
+            //rule two
+            //if these two locations are valid and open, go there
+            for (int r = 5; r >= 0; r--)
+            {
+                if (validPosition(r, 3))
+                {
+                    if(r == 3)
+                    {
+                        AIFill(r, 3, 1);
+                        //gameOver = true;
+                        Console.WriteLine("Kevin is using rule 2");
+                        return;
+                    }
+                    else if(r == 2)
+                    {
+                        AIFill(r, 3, 1);
+                        //gameOver = true;
+                        Console.WriteLine("Kevin is using rule 2");
+                        return;
+                    }
+                    break;
+                }
+            }
+
+            //rule 3
+            //assume bottom left attack formation
             for (int r = 5; r >= 0; r--)
             {
                 for (int c = 0; c < 7; c++)
@@ -645,7 +692,7 @@ namespace ConnectFour_Group2
                     {
                         AIFill(r, c, 1);
                         //gameOver = true;
-                        Console.WriteLine("Kevin is just using his big brain");
+                        Console.WriteLine("Kevin is just using his big brain rule 3");
                         return;
                     }
                     
@@ -709,6 +756,35 @@ namespace ConnectFour_Group2
                 mform.addFromFile();
                 whoWon(2);
             }
+        }
+
+        public bool AIbetweenTwo(int r, int c, int f)
+        {
+            // Horizontal win check
+            int count = 1;
+
+            // Left
+            int col = c - 1;
+            if (col >= 0 && gm.getBoard().getCell(r, col).getFilled() == f)
+            {
+                count++;
+                
+            }
+
+            // Right
+            col = c + 1;
+            if (col <= 6 && gm.getBoard().getCell(r, col).getFilled() == f)
+            {
+                count++;
+                
+            }
+
+            if (count == 3)
+            {
+                //Console.WriteLine("horizontal win");
+                return true;
+            }
+            return false;
         }
 
 
