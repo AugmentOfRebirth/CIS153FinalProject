@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -53,93 +54,179 @@ namespace ConnectFour_Group2
         {
             ////this action handles the turn preview for all top buttons
 
-
-
-            if (sender is PictureBox pb)
+            if (gameType == 1)
             {
-                if (player1Turn)
+                if (sender is PictureBox pb)
                 {
-                    string[] parts = pb.Name.Split('_');
-                    if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                    if (player1Turn)
                     {
-                        pbEnterExit(col, 'x');
+                        string[] parts = pb.Name.Split('_');
+                        if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                        {
+                            pbEnterExit(col, 'x');
+                        }
                     }
-                }
-                else
-                {
-                    string[] parts = pb.Name.Split('_');
-                    if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                    else
                     {
-                        pbEnterExit(col, 'y');
+                        string[] parts = pb.Name.Split('_');
+                        if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                        {
+                            pbEnterExit(col, 'y');
+                        }
                     }
                 }
             }
+            else if (gameType == 0)
+            {
+                //this is for games against the AI
+                if (sender is PictureBox pb)
+                {
+                    string[] parts = pb.Name.Split('_');
+                    if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                    {
+                        player1tempfill(col);
+                    }
+
+                }
+            }
+
 
 
         }
         private void pb_MouseLeave(object sender, EventArgs e)
         {
             ////this action makes sure the turn preview goes away after moving the mouse off
+            
 
-            if (buttonWasClicked)
+            if (gameType == 1)
             {
-                buttonWasClicked = false;
-                return;
-            }
-
-            if (sender is PictureBox pb)
-            {
-                string[] parts = pb.Name.Split('_');
-                if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                if (buttonWasClicked)
                 {
-                    pbEnterExit(col, 'z');
+                    buttonWasClicked = false;
+                    return;
+                }
+
+                if (sender is PictureBox pb)
+                {
+                    string[] parts = pb.Name.Split('_');
+                    if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                    {
+                        pbEnterExit(col, 'z');
+                    }
                 }
             }
+            else if (gameType == 0)
+            {
+                if (sender is PictureBox pb)
+                {
+                    string[] parts = pb.Name.Split('_');
+                    if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                    {
+                        player1tempErase(col);
+                    }
+
+                }
+            }
+
         }
-        private void pb_Click(object sender, EventArgs e)
+        private async void pb_Click(object sender, EventArgs e)
         {
             buttonWasClicked = true;
-            if (sender is PictureBox pb)
+
+            if(gameType == 1)
             {
-                string[] parts = pb.Name.Split('_');
-                if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                if (sender is PictureBox pb)
                 {
-                    bool colFillCheck = pbEnterCheck(col);
-
-                    if(player1Turn && colFillCheck)
+                    string[] parts = pb.Name.Split('_');
+                    if (parts.Length == 3 && int.TryParse(parts[2], out int col))
                     {
-                        pbEnterExit(col, 'x');
-                        player1Turn = false;
-                        //Console.WriteLine("first if statement");
+                        bool colFillCheck = pbEnterCheck(col);
 
-                        lbl_Turn.Text = "Player 2's Turn";
-                        lbl_Turn.ForeColor = Color.Red;
+                        if (player1Turn && colFillCheck)
+                        {
+                            pbEnterExit(col, 'x');
+                            player1Turn = false;
+                            //Console.WriteLine("first if statement");
 
-                        turnCount++;
+                            lbl_Turn.Text = "Player 2's Turn";
+                            lbl_Turn.ForeColor = Color.Red;
 
-                        buttonWasClicked = false;
-                        pbEnterExit(col, 'y');
+                            turnCount++;
 
+                            buttonWasClicked = false;
+                            pbEnterExit(col, 'y');
+
+
+                        }
+                        else if (!player1Turn && colFillCheck)
+                        {
+                            pbEnterExit(col, 'y');
+                            player1Turn = true;
+                            //Console.WriteLine("second if statement");
+
+                            lbl_Turn.Text = "Player 1's Turn";
+                            lbl_Turn.ForeColor = Color.Blue;
+
+                            turnCount++;
+
+                            buttonWasClicked = false;
+                            pbEnterExit(col, 'x');
+
+                        }
 
                     }
-                    else if(!player1Turn && colFillCheck)
-                    {
-                        pbEnterExit(col, 'y');
-                        player1Turn= true;
-                        //Console.WriteLine("second if statement");
-
-                        lbl_Turn.Text = "Player 1's Turn";
-                        lbl_Turn.ForeColor = Color.Blue;
-
-                        turnCount++;
-
-                        buttonWasClicked = false;
-                        pbEnterExit(col, 'x');
-
-                    }
-
                 }
             }
+            else if(gameType == 0)
+            {
+                if (sender is PictureBox pb)
+                {
+                    string[] parts = pb.Name.Split('_');
+                    if (parts.Length == 3 && int.TryParse(parts[2], out int col))
+                    {
+                        bool colFillCheck = pbEnterCheck(col);
+
+                        if (colFillCheck && player1Turn)
+                        {
+                            
+
+                            player1Turn = false;
+                            pbEnterExit(col, 'x');
+
+                            //Console.WriteLine("first if statement");
+
+                            lbl_Turn.Text = "Kevin's Turn";
+                            //lbl_Turn.ForeColor = Color.Red;
+
+                            turnCount++;
+
+                            //buttonWasClicked = false;
+                            //pbEnterExit(col, 'x');
+                            await Task.Delay(500);
+
+                        }
+
+                        if(!player1Turn)
+                        {
+                            KevinAI();
+                            //pbEnterExit(col, 'y');
+                            player1Turn = true;
+                            //Console.WriteLine("second if statement");
+
+                            lbl_Turn.Text = "Player 1's Turn";
+                            //lbl_Turn.ForeColor = Color.Blue;
+
+                            turnCount++;
+
+                            buttonWasClicked = false;
+                            //pbEnterExit(col, 'x');
+                        }
+                        
+
+                    }
+                }
+            }
+            
 
             
 
@@ -222,6 +309,7 @@ namespace ConnectFour_Group2
                 gm.getBoard().getCell(r, c).getBox().Image = Properties.Resources.black;
 
             }
+            
 
             if (buttonWasClicked)
             {
@@ -304,14 +392,24 @@ namespace ConnectFour_Group2
                 }
             }
 
+            if(won && gameType == 0)
+            {
+                player1Turn = true;
+            }
+
+
+
             if(won && p1win)
             {
+                
                 whoWon(1);
             }
             else if(won && !p1win)
             {
                 whoWon(2);
             }
+
+
 
         }
         public bool winVertical(int r, int c, int f)
@@ -329,7 +427,7 @@ namespace ConnectFour_Group2
 
                     if (i == 3)
                     {
-                        Console.WriteLine("vertical win");
+                        //Console.WriteLine("vertical win");
                         return true;
                     }
                 }
@@ -359,7 +457,7 @@ namespace ConnectFour_Group2
 
             if (count >= 4)
             {
-                Console.WriteLine("horizontal win");
+                //Console.WriteLine("horizontal win");
                 return true;
             }
             return false;
@@ -391,7 +489,7 @@ namespace ConnectFour_Group2
 
             if (count >= 4)
             {
-                Console.WriteLine("Diagonal Ascended win");
+                //Console.WriteLine("Diagonal Ascended win");
                 return true;
             }
             return false;
@@ -423,7 +521,7 @@ namespace ConnectFour_Group2
 
             if (count >= 4)
             {
-                Console.WriteLine("Diagonal Descended win");
+                //Console.WriteLine("Diagonal Descended win");
                 return true;
             }
             return false;
@@ -447,11 +545,162 @@ namespace ConnectFour_Group2
             enableReviewMode();
         }
 
+        //making some new functions just for 1 player mode
+        //these aren't actually needed but I used them for testing
+        //and finding bug fixes 
+        public void player1tempfill(int c)
+        {
+            for (int r = 5; r >= 0; r--)
+            {
+                Cell cell = gm.getBoard().getCell(r, c);
+                if (cell != null && cell.getFilled() == 'z')
+                {
+                    gm.getBoard().getCell(r, c).getBox().Image = Properties.Resources.blue;
+                    break;
+                }
+            }
+        }
+        public void player1tempErase(int c)
+        {
+            for (int r = 5; r >= 0; r--)
+            {
+                Cell cell = gm.getBoard().getCell(r, c);
+                if (cell != null && cell.getFilled() == 'z')
+                {
+                    gm.getBoard().getCell(r, c).getBox().Image = Properties.Resources.black;
+                    break;
+                }
+            }
+        }
+
         //setter just in case zmoore doesn't like public form varaibles
         public void SetStatsForm(StatsForm stats)
         {
             //just in case zmoore cares about private form variables
             sForm = stats;
+        }
+
+        //==============================AI=======================================
+
+        public void KevinAI()
+        {
+            //this will handle the AI's turn
+
+            //this AI will have 3 rules, and since i'm not sure if Check for win
+            //and block opponent win will count, i will make it have 5 technically
+
+           
+
+            //first, check if itself can win
+            for(int c = 0; c < 7; c++)
+            {
+                for(int r = 5; r >= 0; r--)
+                {
+                    if (validPosition(r, c))
+                    {
+                        if (AIwinCheck(r, c, 'y', 0))
+                        {
+                            //gameOver = true;
+                            Console.WriteLine("Kevin found a winning ai position");
+                            return;
+                        }
+                        break;
+                    }
+                    
+                }
+            }
+
+            //if it can't, check if it can block opponent win
+            for (int c = 0; c < 7; c++)
+            {
+                for (int r = 5; r >= 0; r--)
+                {
+                    if (validPosition(r, c))
+                    {
+                        if(AIwinCheck(r, c, 'x', 1))
+                        {
+                            //gameOver = true;
+                            Console.WriteLine("Kevin found a winning player position");
+                            return;
+                        }
+                        break;
+                    }                   
+                }
+            }
+
+            //if neither of those end the game, proceed to "strategy"
+
+            //testing braindead strategy
+            for (int r = 5; r >= 0; r--)
+            {
+                for (int c = 0; c < 7; c++)
+                {
+                    if (validPosition(r, c))
+                    {
+                        AIFill(r, c, 1);
+                        //gameOver = true;
+                        Console.WriteLine("Kevin is just fucking guessing");
+                        return;
+                    }
+                    
+                }
+            }
+
+
+
+        }
+        public bool validPosition(int r, int c)
+        {
+            if(gm.getBoard().getCell(r, c).getFilled() == 'z')
+            {
+                //Console.WriteLine(r + " " + c);
+                return true;
+            }
+
+            return false;
+        }
+        public bool AIwinCheck(int r, int c, char f, int AI)
+        {
+            //the AI's personal win-checker for its own moves and 
+            //its opponents moves
+            gm.getBoard().getCell(r, c).setFilled(f);
+
+
+            if (winVertical(r, c, f))
+            {
+                AIFill(r, c, AI);
+                return true;
+            }
+            else if (winHorizontal(r, c, f))
+            {
+                AIFill(r, c, AI);
+                return true;
+            }
+            else if (winDiagonalAscend(r, c, f))
+            {
+                AIFill(r, c, AI);
+                return true;
+            }
+            else if (winDiagonalDescend(r, c, f))
+            {
+                AIFill(r, c, AI);
+                return true;
+            }
+
+            gm.getBoard().getCell(r, c).setFilled('z');
+
+            return false;
+
+        }
+        public void AIFill(int r, int c, int AI)
+        {
+            gm.getBoard().getCell(r, c).getBox().Image = Properties.Resources.red;
+            gm.getBoard().getCell(r, c).setFilled('y');
+
+            if (AI == 0)
+            {
+                whoWon(2);
+            }
         }
 
 

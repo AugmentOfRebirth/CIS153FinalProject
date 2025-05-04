@@ -76,7 +76,15 @@ namespace ConnectFour_Group2
             }
             else if (winner == 2)
             {
-                lbl_title.Text = "Player 2 is the winner";
+                if(gameType == 1)
+                {
+                    lbl_title.Text = "Player 2 is the winner";
+                }
+                else
+                {
+                    lbl_title.Text = "KevinAI is the winner";
+                }
+                
             }
             else if (winner == 3)
             {
@@ -90,8 +98,8 @@ namespace ConnectFour_Group2
 
         private void btn_return_Click(object sender, EventArgs e)
         {
-            mform.Show();
             this.Hide();
+            mform.Show();            
         }
 
         private void StatsForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -103,8 +111,9 @@ namespace ConnectFour_Group2
         {
             bform.SetStatsForm(this);
 
-            bform.Show();
             this.Hide();
+            bform.Show();
+            
         }
         private void btn_playAgain_Click(object sender, EventArgs e)
         {
