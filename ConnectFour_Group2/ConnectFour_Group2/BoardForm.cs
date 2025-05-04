@@ -230,12 +230,18 @@ namespace ConnectFour_Group2
 
             
 
-            if (turnCount == 42)
+            if (turnCount == 42 && gameType == 1)
             {
                 //tie games
                 whoWon(3);
             }
-
+            else if (turnCount == 42 && gameType == 0)
+            {
+                mform.updateScores("Player 1", 0, 1);
+                mform.updateScores("Computer", 0, 1);
+                mform.addFromFile();
+                whoWon(3);
+            }
 
         }
         private void btn_statsReturn_Click(object sender, EventArgs e)
@@ -401,7 +407,8 @@ namespace ConnectFour_Group2
 
             if(won && p1win)
             {
-                
+                mform.updateScores("Player 1", 1, 0);
+                mform.addFromFile();
                 whoWon(1);
             }
             else if(won && !p1win)
@@ -699,6 +706,8 @@ namespace ConnectFour_Group2
 
             if (AI == 0)
             {
+                mform.updateScores("Computer", 1, 0);
+                mform.addFromFile();
                 whoWon(2);
             }
         }

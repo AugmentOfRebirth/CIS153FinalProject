@@ -31,12 +31,15 @@ namespace ConnectFour_Group2
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             addFromFile();
-            
+            Console.WriteLine(players[0].getScore());
+
+
+
             //putting a table here for reference
             //0 = player 1, 1 = computer
             //Console.WriteLine(players[0].getPlay());
             //Console.WriteLine(players[1].getPlay());
-            
+
             ////=============================================================
             ////this is testing to make sure it is stored properly
             ////also for if you guys ever need to check when doing something
@@ -93,7 +96,7 @@ namespace ConnectFour_Group2
         {
             StreamReader file = new StreamReader("../../Scores.txt");
             string line = file.ReadLine();
-
+            players.Clear();
             string player;
             string score;
             string tie;
@@ -161,23 +164,94 @@ namespace ConnectFour_Group2
         }
         public void updateScores(string playerName, int newWins, int newTies)
         {
-            string filePath = "../ConnectFour_Group2/Scores.txt";
-            string[] lines = File.ReadAllLines(filePath);
+            string filePath = "../../Scores.txt";
+            //StreamWriter file = new StreamWriter(filePath);
+            
 
-            for (int i = 0; i < lines.Length; i++)
+            string line;
+            if (playerName == "Player 1")
             {
-                string[] parts = lines[i].Split(',');
+                int newScore = Int32.Parse(players[0].getScore()) + newWins;
+                int newDraws = Int32.Parse(players[0].getTie()) + newTies;
 
-                if (parts[0] == playerName)
-                {
-                    parts[1] = newWins.ToString();
-                    parts[2] = newTies.ToString();
-                    lines[i] = string.Join(",", parts);
-                    break;
-                }
+                File.WriteAllText(filePath, String.Empty);
+
+                Console.WriteLine("I am supposed to update the text file");
+                line = "Player 1";
+                line += ",";
+                line += newScore.ToString();
+                line += ",";
+                line += newDraws.ToString();
+                line += "\n";
+                //file.WriteLine(line);
+
+                
+                line += "Computer";
+                line += ",";
+                line += players[1].getScore();
+                line += ",";
+                line += newDraws.ToString();
+                File.AppendAllText(filePath, line);
+                //file.WriteLine(line);
+
+                //Player 1,0,0
+                //Computer,0,0
             }
 
-            File.WriteAllLines(filePath, lines);
+            if (playerName == "Computer")
+            {
+                int newScore = Int32.Parse(players[1].getScore()) + newWins;
+                int newDraws = Int32.Parse(players[1].getTie()) + newTies;
+
+                File.WriteAllText(filePath, String.Empty);
+
+                Console.WriteLine("I am supposed to update the text file");
+                line = "Player 1";
+                line += ",";
+                line += players[0].getScore();
+                line += ",";
+                line += newDraws.ToString();
+                line += "\n";
+                //file.WriteLine(line);
+
+
+                line += "Computer";
+                line += ",";
+                line += newScore.ToString();
+                line += ",";
+                line += newDraws.ToString();
+                File.AppendAllText(filePath, line);
+                //file.WriteLine(line);
+
+                //Player 1,0,0
+                //Computer,0,0
+            }
+
+
+
+
+
+
+
+
+
+
+            //string[] lines = File.ReadAllLines(filePath);
+
+            //for (int i = 0; i < lines.Length; i++)
+            //{
+            //    string[] parts = lines[i].Split(',');
+
+            //    if (parts[0] == playerName)
+            //    {
+            //        parts[1] = newWins.ToString();
+            //        parts[2] = newTies.ToString();
+            //        lines[i] = string.Join(",", parts);
+            //        break;
+            //    }
+            //}
+
+            //File.WriteAllLines(filePath, line);
         }
     }
 }
