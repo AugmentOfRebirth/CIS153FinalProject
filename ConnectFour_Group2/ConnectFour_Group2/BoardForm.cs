@@ -188,11 +188,11 @@ namespace ConnectFour_Group2
 
                         if (colFillCheck && player1Turn)
                         {
-                            
+
 
                             player1Turn = false;
                             pbEnterExit(col, 'x');
-
+                            
                             //Console.WriteLine("first if statement");
 
                             lbl_Turn.Text = "Kevin's Turn";
@@ -401,17 +401,16 @@ namespace ConnectFour_Group2
             if(won && gameType == 0)
             {
                 player1Turn = true;
-            }
-
-
-
-            if(won && p1win)
-            {
                 mform.updateScores("Player 1", 1, 0);
                 mform.addFromFile();
                 whoWon(1);
             }
-            else if(won && !p1win)
+            else if(won && p1win && gameType == 1)
+            {
+                
+                whoWon(1);
+            }
+            else if(won && !p1win && gameType == 1)
             {
                 whoWon(2);
             }
@@ -646,7 +645,7 @@ namespace ConnectFour_Group2
                     {
                         AIFill(r, c, 1);
                         //gameOver = true;
-                        Console.WriteLine("Kevin is just fucking guessing");
+                        Console.WriteLine("Kevin is just using his big brain");
                         return;
                     }
                     
