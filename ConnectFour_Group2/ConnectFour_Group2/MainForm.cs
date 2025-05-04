@@ -94,6 +94,17 @@ namespace ConnectFour_Group2
 
         public void addFromFile()
         {
+
+            // if file doesn't exist, then create it and add default score crap
+            if (!File.Exists("../../Scores.txt"))
+            {
+
+                StreamWriter makeFile = File.CreateText("../../Scores.txt");
+                makeFile.WriteLine("Player 1,0,0");
+                makeFile.WriteLine("Computer,0,0");
+                makeFile.Close();
+
+            }
             StreamReader file = new StreamReader("../../Scores.txt");
             string line = file.ReadLine();
             players.Clear();
