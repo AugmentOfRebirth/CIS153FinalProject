@@ -159,5 +159,25 @@ namespace ConnectFour_Group2
             lblTotal.Text = players[0].getTie() + Environment.NewLine + Environment.NewLine;
             lblTotal.Text += numOfGames;
         }
+        public void updateScores(string playerName, int newWins, int newTies)
+        {
+            string filePath = "../ConnectFour_Group2/Scores.txt";
+            string[] lines = File.ReadAllLines(filePath);
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string[] parts = lines[i].Split(',');
+
+                if (parts[0] == playerName)
+                {
+                    parts[1] = newWins.ToString();
+                    parts[2] = newTies.ToString();
+                    lines[i] = string.Join(",", parts);
+                    break;
+                }
+            }
+
+            File.WriteAllLines(filePath, lines);
+        }
     }
 }
