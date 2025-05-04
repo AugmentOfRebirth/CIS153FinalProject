@@ -10,7 +10,7 @@ namespace ConnectFour_Group2
 {
     internal class GameMaster
     {
-        Board b = new Board();
+        private Board b = new Board();
 
 
         public void InitGame(Form form)

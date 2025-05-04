@@ -9,10 +9,10 @@ namespace ConnectFour_Group2
 {
     internal class Cell
     {
-        int row;
-        int col;
-        char filled;
-        PictureBox Pbox;
+        private int row;
+        private int col;
+        private char filled;
+        private PictureBox Pbox;
 
         public Cell()
         {
