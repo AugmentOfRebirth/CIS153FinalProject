@@ -1,2 +1,2 @@
 Player 1,18,2
-Computer,24,2
+Computer,25,2

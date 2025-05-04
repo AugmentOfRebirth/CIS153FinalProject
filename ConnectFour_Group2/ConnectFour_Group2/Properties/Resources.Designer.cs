@@ -100,7 +100,6 @@ namespace ConnectFour_Group2.Properties {
             }
         }
         
-        
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
