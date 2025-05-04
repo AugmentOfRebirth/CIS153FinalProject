@@ -37,13 +37,14 @@
             // 
             // btn_1player
             // 
+            this.btn_1player.BackColor = System.Drawing.SystemColors.Control;
             this.btn_1player.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_1player.Location = new System.Drawing.Point(41, 160);
             this.btn_1player.Name = "btn_1player";
             this.btn_1player.Size = new System.Drawing.Size(212, 65);
             this.btn_1player.TabIndex = 0;
-            this.btn_1player.Text = "1 PLAYER";
-            this.btn_1player.UseVisualStyleBackColor = true;
+            this.btn_1player.Text = "PLAYING ALONE?";
+            this.btn_1player.UseVisualStyleBackColor = false;
             this.btn_1player.Click += new System.EventHandler(this.btn_1player_Click);
             // 
             // btn_2player
@@ -53,7 +54,7 @@
             this.btn_2player.Name = "btn_2player";
             this.btn_2player.Size = new System.Drawing.Size(212, 65);
             this.btn_2player.TabIndex = 1;
-            this.btn_2player.Text = "2 PLAYER";
+            this.btn_2player.Text = "GOT A FRIEND?";
             this.btn_2player.UseVisualStyleBackColor = true;
             this.btn_2player.Click += new System.EventHandler(this.btn_2player_Click);
             // 
@@ -64,7 +65,7 @@
             this.btn_stats.Name = "btn_stats";
             this.btn_stats.Size = new System.Drawing.Size(212, 65);
             this.btn_stats.TabIndex = 2;
-            this.btn_stats.Text = "STATS";
+            this.btn_stats.Text = "PREVIOUS LOSERS";
             this.btn_stats.UseVisualStyleBackColor = true;
             this.btn_stats.Click += new System.EventHandler(this.btn_stats_Click);
             // 
@@ -75,7 +76,7 @@
             this.btn_exit.Name = "btn_exit";
             this.btn_exit.Size = new System.Drawing.Size(212, 65);
             this.btn_exit.TabIndex = 3;
-            this.btn_exit.Text = "EXIT";
+            this.btn_exit.Text = "EXIT (COWARD)";
             this.btn_exit.UseVisualStyleBackColor = true;
             this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
@@ -85,15 +86,16 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(27, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(456, 39);
+            this.label1.Size = new System.Drawing.Size(440, 31);
             this.label1.TabIndex = 4;
-            this.label1.Text = "WELCOME TO CONNECT 4";
+            this.label1.Text = "WELCOME TO CONNECT SOULS";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(587, 414);
+            this.BackgroundImage = global::ConnectFour_Group2.Properties.Resources.stone_wall;
+            this.ClientSize = new System.Drawing.Size(582, 445);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.btn_stats);

@@ -109,6 +109,8 @@
     <None Include="Resources\black.jpg" />
     <None Include="Resources\red.jpg" />
     <None Include="Resources\blue.jpg" />
+    <None Include="Resources\old_mossy_castle.png" />
+    <None Include="Resources\stone_wall.jpg" />
     <Content Include="Scores.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
