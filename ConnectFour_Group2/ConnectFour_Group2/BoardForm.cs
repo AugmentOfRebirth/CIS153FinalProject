@@ -337,14 +337,14 @@ namespace ConnectFour_Group2
                 won = true;
                 if(player1Turn)
                 {
-                    lbl_win.Visible = true;
+                    //lbl_win.Visible = true;
                     p1win = true;
                 }
                 else
                 {
                     lbl_win.Text = "Player 2 Wins!!!";
                     lbl_win.ForeColor = Color.Red;
-                    lbl_win.Visible = true;
+                    //lbl_win.Visible = true;
 
                 }
 
@@ -354,14 +354,14 @@ namespace ConnectFour_Group2
                 won = true;
                 if (player1Turn)
                 {
-                    lbl_win.Visible = true;
+                    //lbl_win.Visible = true;
                     p1win = true;
                 }
                 else
                 {
                     lbl_win.Text = "Player 2 Wins!!!";
                     lbl_win.ForeColor = Color.Red;
-                    lbl_win.Visible = true;
+                    //lbl_win.Visible = true;
 
                 }
             }
@@ -370,14 +370,14 @@ namespace ConnectFour_Group2
                 won = true;
                 if (player1Turn)
                 {
-                    lbl_win.Visible = true;
+                    //lbl_win.Visible = true;
                     p1win = true;
                 }
                 else
                 {
                     lbl_win.Text = "Player 2 Wins!!!";
                     lbl_win.ForeColor = Color.Red;
-                    lbl_win.Visible = true;
+                    //lbl_win.Visible = true;
 
                 }
             }
@@ -386,14 +386,14 @@ namespace ConnectFour_Group2
                 won = true;
                 if (player1Turn)
                 {
-                    lbl_win.Visible = true;
+                    //lbl_win.Visible = true;
                     p1win = true;
                 }
                 else
                 {
                     lbl_win.Text = "Player 2 Wins!!!";
                     lbl_win.ForeColor = Color.Red;
-                    lbl_win.Visible = true;
+                    //lbl_win.Visible = true;
 
                 }
             }
